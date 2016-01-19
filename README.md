@@ -8,6 +8,7 @@ The project is work in progress.
 
 * Android Ice Cream Sandwich(API 15) or higher.
 * Tesseract and Leptonica have to be compiled and imported as libraries.
+* To use OpenCV image processing techniques,the same has to be compiled and imported.
 
 ## License
 
