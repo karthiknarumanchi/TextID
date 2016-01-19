@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TextID</string>
+    <string name="button_text">Capture Image</string>
+    <string name="text_hint">Capture an image to view recognized text here</string>
+    <string name="toggle_processing">G / BW</string>
+    <string name="action_about">About</string>
+
+</resources>
