@@ -122,6 +122,7 @@ public class CaptureActivity extends Activity implements View.OnClickListener {
         progress.setCancelable(false);
         output=new OutputActivity(this);
 
+        // For Open CV based Processing, uncomment both the below methodcall and the method
 /*        if (!OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_2,
                 CaptureActivity.this, mOpenCVCallBack)) {
             Log.e("TEST", "Cannot connect to OpenCV Manager");
