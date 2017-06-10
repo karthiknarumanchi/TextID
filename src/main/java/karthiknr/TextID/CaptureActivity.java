@@ -45,7 +45,7 @@ import java.io.OutputStream;
  */
 public class CaptureActivity extends Activity implements View.OnClickListener {
 	public static final String PACKAGE_NAME = "karthiknr.TextID";
-	public static final String DATA_PATH = Environment.getExternalStorageDirectory().toString() + "/TextID/";
+    public static final String DATA_PATH = Environment.getExternalStorageDirectory().toString() + "/TextID/";
 	private static final String TAG = "CaptureActivity";
 
     public static final String lang = "eng";
