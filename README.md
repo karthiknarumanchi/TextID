@@ -2,6 +2,8 @@
 
 This project uses Tesseract OCR Library for text recognition. To enhance image quality for better recognition,basic grayscaling of images and binarization methods are used.
 
+[Screenshot](/screens/Picture1.png?raw=true "Screenshot")
+
 ## Pre-requisites
 
 * Android Ice Cream Sandwich(API 15) or higher.
