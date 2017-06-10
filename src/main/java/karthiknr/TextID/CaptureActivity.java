@@ -44,78 +44,78 @@ import java.io.OutputStream;
  * Created by Karthik on 15-Dec-15.
  */
 public class CaptureActivity extends Activity implements View.OnClickListener {
-	public static final String PACKAGE_NAME = "karthiknr.TextID";
+    public static final String PACKAGE_NAME = "karthiknr.TextID";
     public static final String DATA_PATH = Environment.getExternalStorageDirectory().toString() + "/TextID/";
-	private static final String TAG = "CaptureActivity";
+    private static final String TAG = "CaptureActivity";
 
     public static final String lang = "eng";
 
     public static boolean isEnhanced = false;
 
-	protected Button shutter_button;
+    protected Button shutter_button;
     protected Button speech_button;
     protected Button gallery_button;
-	protected static TextView _field;
+    protected static TextView _field;
     protected static ImageView _image;
-	protected String _path;
-	protected boolean _taken;
+    protected String _path;
+    protected boolean _taken;
     protected OutputActivity output;
     protected static ProgressDialog progress;
 
-	protected static final String PHOTO_TAKEN = "photo_taken";
+    protected static final String PHOTO_TAKEN = "photo_taken";
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
 
-		String[] paths = new String[] { DATA_PATH, DATA_PATH + "tessdata/" };
+    	String[] paths = new String[] { DATA_PATH, DATA_PATH + "tessdata/" };
 
-		for (String path : paths) {
-			File dir = new File(path);
-			if (!dir.exists()) {
-				if (!dir.mkdirs()) {
-					Log.v(TAG, "ERROR: Creation of directory " + path + " on sdcard failed");
-					return;
-				} else {
-					Log.v(TAG, "Created directory " + path + " on sdcard");
-				}
-			}
-		}
-		if (!(new File(DATA_PATH + "tessdata/" + lang + ".traineddata")).exists()) {
-			try {
-				AssetManager assetManager = getAssets();
-				InputStream in = assetManager.open("tessdata/" + lang + ".traineddata");
-				//GZIPInputStream gin = new GZIPInputStream(in);
-				OutputStream out = new FileOutputStream(DATA_PATH
-						+ "tessdata/" + lang + ".traineddata");
+    	for (String path : paths) {
+    		File dir = new File(path);
+    		if (!dir.exists()) {
+    			if (!dir.mkdirs()) {
+    				Log.v(TAG, "ERROR: Creation of directory " + path + " on sdcard failed");
+    				return;
+    			} else {
+    				Log.v(TAG, "Created directory " + path + " on sdcard");
+    			}
+    		}
+    	}
+    	if (!(new File(DATA_PATH + "tessdata/" + lang + ".traineddata")).exists()) {
+    		try {
+    			AssetManager assetManager = getAssets();
+    			InputStream in = assetManager.open("tessdata/" + lang + ".traineddata");
+    			//GZIPInputStream gin = new GZIPInputStream(in);
+    			OutputStream out = new FileOutputStream(DATA_PATH
+    					+ "tessdata/" + lang + ".traineddata");
 
-				// Transfer bytes from in to out
-				byte[] buf = new byte[1024];
-				int len;
-				//while ((lenf = gin.read(buff)) > 0) {
-				while ((len = in.read(buf)) > 0) {
-					out.write(buf, 0, len);
-				}
-				in.close();
-				//gin.close();
-				out.close();
+    			// Transfer bytes from in to out
+    			byte[] buf = new byte[1024];
+    			int len;
+    			//while ((lenf = gin.read(buff)) > 0) {
+    			while ((len = in.read(buf)) > 0) {
+    				out.write(buf, 0, len);
+    			}
+    			in.close();
+    			//gin.close();
+    			out.close();
 
-				Log.v(TAG, "Copied " + lang + " traineddata");
-			} catch (IOException e) {
-				Log.e(TAG, "Was unable to copy " + lang + " traineddata " + e.toString());
-			}
-		}
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+    			Log.v(TAG, "Copied " + lang + " traineddata");
+    		} catch (IOException e) {
+    			Log.e(TAG, "Was unable to copy " + lang + " traineddata " + e.toString());
+    		}
+    	}
+    	super.onCreate(savedInstanceState);
+    	setContentView(R.layout.main);
 
-		_field = (TextView) findViewById(R.id.field);
+    	_field = (TextView) findViewById(R.id.field);
         _image = (ImageView) findViewById(R.id.imageView);
-		shutter_button = (Button) findViewById(R.id.shutter_button);
+    	shutter_button = (Button) findViewById(R.id.shutter_button);
         speech_button = (Button) findViewById(R.id.speech_button);
         gallery_button = (Button) findViewById(R.id.gallery_button);
-		shutter_button.setOnClickListener(this);
+    	shutter_button.setOnClickListener(this);
         speech_button.setOnClickListener(this);
         gallery_button.setOnClickListener(this);
-		_path = DATA_PATH + "/ocr.jpg";
+    	_path = DATA_PATH + "/ocr.jpg";
         progress = new ProgressDialog(this);
         progress.setTitle("Please Wait");
         progress.setMessage("Processing Image and Recognizing");
@@ -123,11 +123,11 @@ public class CaptureActivity extends Activity implements View.OnClickListener {
         output=new OutputActivity(this);
 
         // For Open CV based Processing, uncomment both the below methodcall and the method
-/*        if (!OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_2,
+    /*        if (!OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_2,
                 CaptureActivity.this, mOpenCVCallBack)) {
             Log.e("TEST", "Cannot connect to OpenCV Manager");
         }
-*/
+    */
 	}
 /*
     private BaseLoaderCallback mOpenCVCallBack = new BaseLoaderCallback(this) {
