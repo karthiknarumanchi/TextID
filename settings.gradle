@@ -1,2 +1,2 @@
-include ':libraries:tess-two'
+include ':libraries:tess-two', ':VisionID'
 include ':openCVLibrary300'

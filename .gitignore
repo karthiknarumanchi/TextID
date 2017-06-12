@@ -42,3 +42,13 @@ gen/
 /libs
 /libraries
 /openCVLibrary300
+.gradle/3.3/taskArtifacts/fileHashes.bin
+.gradle/
+.idea/
+gradlew
+gradlew.bat
+TextID.iml
+
+
+
+gradle/wrapper/gradle-wrapper.properties
